@@ -6,6 +6,7 @@ const Benchmark = require('benchmark')
 const beautifyBenchmarks = require('beautify-benchmark')
 const chengyuRegex = require('../lib/chengyuRegex')
 const matchChengyuUseTrie = require('../lib/matchChengyuUseTrie')
+const matchChengyuUseIndexedRegex = require('../lib/matchChengyuUseIndexedRegex')
 
 let suite = new Benchmark.Suite
 
@@ -13,7 +14,7 @@ let fixture = '克罗克入主快餐馆后，经营、管理更加出色，很�
 
 let rOnlyOneWord = /瞒天过海/g
 
-suite.add('Chengyu RegExp', () => {
+suite.add('matchChengyuUseRegex', () => {
   chengyuRegex.exec(fixture)
 })
 .add('One Word RegExp', () => {
@@ -21,6 +22,9 @@ suite.add('Chengyu RegExp', () => {
 })
 .add('matchChengyuUseTrie', () => {
   matchChengyuUseTrie(fixture)
+})
+.add('matchChengyuUseIndexedRegex', () => {
+  matchChengyuUseIndexedRegex(fixture)
 })
 .on('cycle', (event) => {
   beautifyBenchmarks.add(event.target)
