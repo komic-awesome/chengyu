@@ -3,6 +3,7 @@
 'use strict'
 
 const Benchmark = require('benchmark')
+const beautifyBenchmarks = require('beautify-benchmark')
 const chengyuRegex = require('../lib/chengyuRegex')
 const matchChengyuUseTrie = require('../lib/matchChengyuUseTrie')
 
@@ -22,9 +23,9 @@ suite.add('Chengyu RegExp', () => {
   matchChengyuUseTrie(fixture)
 })
 .on('cycle', (event) => {
-  console.log(String(event.target));
+  beautifyBenchmarks.add(event.target)
 })
 .on('complete', function() {
-  console.log('Fastest is ' + this.filter('fastest').map('name'))
+  beautifyBenchmarks.log()
 })
 .run({ 'async': true })
