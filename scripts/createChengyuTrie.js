@@ -4,16 +4,9 @@
 
 const fs = require('fs')
 const path = require('path')
-const csv = require('csv')
-const streamToPromise = require('./mods/streamToPromise')
+const fetchChengyuList = require('./mods/fetchChengyuList')
 
 let root = path.join(__dirname, '../')
-
-let chenyuListParser = fs.createReadStream(path.join(root, './seed/chengyu.csv'))
-  .pipe(csv.parse())
-  .pipe(csv.transform((record) => {
-    return record[0]
-  }))
 
 let trieTree = {}
 
@@ -34,7 +27,7 @@ function addWordToTrieTree(word) {
   }
 }
 
-streamToPromise(chenyuListParser).then((chengyuList) => {
+fetchChengyuList().then((chengyuList) => {
   chengyuList.forEach((word) => {
     addWordToTrieTree(word)
   })

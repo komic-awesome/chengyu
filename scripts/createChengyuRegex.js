@@ -4,18 +4,11 @@
 
 const fs = require('fs')
 const path = require('path')
-const csv = require('csv')
-const streamToPromise = require('./mods/streamToPromise')
+const fetchChengyuList = require('./mods/fetchChengyuList')
 
 let root = path.join(__dirname, '../')
 
-let chenyuListParser = fs.createReadStream(path.join(root, './seed/chengyu.csv'))
-  .pipe(csv.parse())
-  .pipe(csv.transform((record) => {
-    return record[0]
-  }))
-
-streamToPromise(chenyuListParser).then((chenyuList) => {
+fetchChengyuList().then((chenyuList) => {
   fs.writeFileSync(
     path.join(root, './lib/chengyuRegex.js')
   , `module.exports = /(${chenyuList.join('|')})/g\n`
