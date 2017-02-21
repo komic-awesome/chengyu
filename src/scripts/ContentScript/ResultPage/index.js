@@ -11,18 +11,23 @@ let styles = {
 
 export default class extends Component {
   render() {
-    let { findedChengyu } = this.props
+    let { findedSentences } = this.props
 
-    let listItems = findedChengyu.map(({ word, sentence }, index) => {
-      let sentenceHtml = {
-        __html: sentence.replace(word, (word) => {
-          return `<strong style="color:#f25867;">${word}</strong>`
-        })
-      }
+    let listItems = findedSentences.map(({ words, sentence }, index) => {
+      words.forEach(
+        (word) => {
+          sentence = sentence.replace(word, (word) => {
+            return `<strong style="color:#f25867;">${word}</strong>`
+          })
+        }
+      )
+
+      let sentenceHtml = { __html: sentence }
+        , wordLabel = words.join(',')
 
       return (
         <div key={index}>
-          <div>{word}</div>
+          <div>{wordLabel}</div>
           <p dangerouslySetInnerHTML={sentenceHtml}></p>
         </div>
       )

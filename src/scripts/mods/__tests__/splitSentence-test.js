@@ -13,3 +13,24 @@ test('Split sentences', () => {
     ]
   )
 })
+
+
+test('Place one space before/after English words', () => {
+  let text = '有 5 个或者四个人。？？\n\n你好啊世界'
+
+  expect(splitSentence(text)).toEqual(
+    [ "有 5 个或者四个人。？？"
+    , "你好啊世界"
+    ]
+  )
+})
+
+test('Split Quote', () => {
+  let text = '她追问她的孩子：“你最爱的人是谁？”，然后心满意足地等待她的答案，“妈妈”。那些面目模糊的朋友们笑作一团。'
+
+  expect(splitSentence(text)).toEqual(
+    [ "她追问她的孩子：“你最爱的人是谁？”，然后心满意足地等待她的答案，“妈妈”。"
+    , "那些面目模糊的朋友们笑作一团。"
+    ]
+  )
+})

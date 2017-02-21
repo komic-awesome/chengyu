@@ -13,7 +13,7 @@ function main() {
 
   let contentText = contentElement.innerText
     , splitedSentences = splitSentence(contentText)
-    , findedChengyu = []
+    , findedSentences = []
 
   splitedSentences.forEach((sentence) => {
     if (sentence.length < CHENGYU_MIN_CHAR_COUNT) { return }
@@ -21,14 +21,17 @@ function main() {
 
     if (!matchedChengyu.length) { return }
 
-    matchedChengyu.forEach((chengyu) => {
-      findedChengyu.push(
-        Object.assign(chengyu, { sentence: sentence })
+    let chengyu = { word: '', sentence: sentence }
+
+    findedSentences.push(
+      Object.assign(
+        { words: matchedChengyu.map(x => x.word) },
+        { sentence: sentence }
       )
-    })
+    )
   })
 
-  createResultPage(findedChengyu)
+  createResultPage(findedSentences)
 }
 
 main()

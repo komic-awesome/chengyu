@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import ResultPage from './ResultPage'
 
-export default function(findedChengyu) {
-  if (!findedChengyu || !findedChengyu.length) {
+export default function(findedSentences) {
+  if (!findedSentences || !findedSentences.length) {
     return
   }
 
@@ -22,11 +22,12 @@ export default function(findedChengyu) {
   container.style.height = '100%'
   container.style.background = 'white'
   container.style.top = '0'
+  container.style.overflow = 'auto'
 
   document.body.appendChild(container)
 
   ReactDOM.render(
-    <ResultPage findedChengyu={findedChengyu} />
+    <ResultPage findedSentences={findedSentences} />
   , document.getElementById(containerId)
   )
 }

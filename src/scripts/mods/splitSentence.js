@@ -1,7 +1,16 @@
-export default function(text) {
-  text = text.replace(/[。？！；.!?]/g, function(match, p1) {
-    return match + ' '
-  })
+const SENTENCE_BREAK = '$sentence_break$'
 
-  return text.split(/\s+/).filter(x => x)
+export default function(text) {
+
+  let paras = text.split(/\n+/g)
+
+  return (
+    paras.map(
+      para => para
+        .replace(/[。？！；.!?]+(?![”"])/g, x => x + SENTENCE_BREAK)
+    )
+    .map(x => x.split(SENTENCE_BREAK))
+    .reduce((acc, x) => acc.concat(x), [])
+    .filter(x => x)
+  )
 }
