@@ -20,6 +20,7 @@
     "material-ui": "0.17.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
+    "run-sequence": "1.2.2",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
   },

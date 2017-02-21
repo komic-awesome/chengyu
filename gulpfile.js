@@ -8,6 +8,7 @@ utils.loadTasks(
   [ [ require('./configs/webpack'), 'compile-javascript' ]
   , [ require('./configs/copy-static'), 'copy-static' ]
   , [ require('./configs/livereload'), 'livereload' ]
+  , [ require('./configs/chromeManifest'), 'chromeManifest' ]
   ]
 )
 
@@ -23,6 +24,7 @@ utils.loadTasks(
         [ 'compile-javascript'
         , 'copy-static'
         , 'livereload'
+        , 'chromeManifest'
         ]
       , environment)
   })

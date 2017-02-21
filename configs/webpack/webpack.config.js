@@ -20,6 +20,13 @@ module.exports = function(entries, buildRoot, srcRoot, environment) {
       path: buildRoot
     , filename: '[name]'
     }
+  , plugins: environment === 'production' ? [
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      })
+    ] : []
   , module: {
       loaders: [
         { test: /\.js$/

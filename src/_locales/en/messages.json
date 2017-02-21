@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "once crx",
-    "description": "The name of the application"
+    "message": "再读",
+    "description": "Find Chengyu in current article."
   },
   "appDescription": {
-    "message": "My Chrome Extension",
-    "description": "The description of the application"
+    "message": "再读",
+    "description": "Find Chengyu in current article."
   }
 }

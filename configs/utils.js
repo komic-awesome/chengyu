@@ -1,5 +1,7 @@
 'use strict'
 
+const runSequence = require('run-sequence')
+
 var Utils = function(gulp) {
   this.gulp = gulp
   this.commands = []
@@ -26,9 +28,13 @@ Utils.prototype.loadTasks = function(configs) {
 
 Utils.prototype.runTasks = function(taskNames, environment) {
   let gulp = this.gulp
-  taskNames.forEach((taskName) => {
-    gulp.start(`${taskName}:${environment}`)
-  })
+
+  runSequence.use(gulp).apply(
+    this
+  , taskNames.map((taskName) => {
+      return `${taskName}:${environment}`
+    })
+  )
 }
 
 Utils.prototype.listCommands = function() {
