@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const chengyuTrie = require('./chengyuTrie')
 
 function matchChengyu(text) {

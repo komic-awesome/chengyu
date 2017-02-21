@@ -12,6 +12,9 @@ module.exports = function(entries, buildRoot, srcRoot, environment) {
     entry: entryForWebpack
   , resolve: {
       root: path.join(srcRoot, 'scripts')
+    , alias: {
+        MatchChengyu: path.join(srcRoot, '../MatchChengyu/lib')
+      }
     }
   , output: {
       path: buildRoot
@@ -19,7 +22,11 @@ module.exports = function(entries, buildRoot, srcRoot, environment) {
     }
   , module: {
       loaders: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+        { test: /\.js$/
+        , exclude: /node_modules/
+        , loader: "babel-loader"
+        , query: {compact: false}
+        }
       ]
     }
   }
