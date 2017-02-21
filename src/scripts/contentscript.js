@@ -3,11 +3,12 @@
 import matchChengyuUseTrie from 'MatchChengyu/matchChengyuUseTrie'
 import splitSentence from 'mods/splitSentence'
 import createResultPage from './ContentScript/createResultPage'
+import findLongestTextElement from 'mods/findLongestTextElement'
 
 const CHENGYU_MIN_CHAR_COUNT = 3
 
 function main() {
-  let contentElement = document.querySelector('#link-report')
+  let contentElement = findLongestTextElement()
     , findedSentences = []
 
   if (!contentElement) {
