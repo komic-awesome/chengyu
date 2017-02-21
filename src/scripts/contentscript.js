@@ -24,7 +24,7 @@ function main() {
 
     if (!matchedChengyu.length) { return }
 
-    let chengyu = { word: '', sentence: sentence }
+    let chengyu = { word: '', sentence: sentence.trim() }
 
     findedSentences.push(
       Object.assign(
