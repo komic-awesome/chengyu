@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom'
 import ResultPage from './ResultPage'
 
 export default function(findedSentences) {
-  if (!findedSentences || !findedSentences.length) {
-    return
-  }
-
   let containerId = 'chengyu-root-XHDASD'
     , container = document.getElementById(containerId)
 
@@ -17,12 +13,14 @@ export default function(findedSentences) {
   container = document.createElement('div')
 
   container.id = containerId
+  container.style.all = 'initial'
   container.style.position = 'fixed'
   container.style.width = '100%'
   container.style.height = '100%'
   container.style.background = 'white'
   container.style.top = '0'
   container.style.overflow = 'auto'
+  container.style.zIndex = '9999'
 
   document.body.appendChild(container)
 

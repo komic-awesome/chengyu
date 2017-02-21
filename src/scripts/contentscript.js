@@ -8,12 +8,14 @@ const CHENGYU_MIN_CHAR_COUNT = 3
 
 function main() {
   let contentElement = document.querySelector('#link-report')
+    , findedSentences = []
 
-  if (!contentElement) { return }
+  if (!contentElement) {
+    return createResultPage(findedSentences)
+  }
 
   let contentText = contentElement.innerText
     , splitedSentences = splitSentence(contentText)
-    , findedSentences = []
 
   splitedSentences.forEach((sentence) => {
     if (sentence.length < CHENGYU_MIN_CHAR_COUNT) { return }
