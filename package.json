@@ -16,10 +16,14 @@
     "gulp-livereload": "3.8.1",
     "gulp-load-plugins": "1.5.0",
     "gulp-watch": "4.3.11",
+    "jest": "18.1.0",
     "material-ui": "0.17.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
