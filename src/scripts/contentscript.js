@@ -2,6 +2,9 @@
 
 import matchChengyuUseTrie from 'MatchChengyu/matchChengyuUseTrie'
 import splitSentence from 'mods/splitSentence'
+import createResultPage from './ContentScript/createResultPage'
+
+const CHENGYU_MIN_CHAR_COUNT = 3
 
 function main() {
   let contentElement = document.querySelector('#link-report')
@@ -13,7 +16,7 @@ function main() {
     , findedChengyu = []
 
   splitedSentences.forEach((sentence) => {
-    if (sentence.length < 3) { return }
+    if (sentence.length < CHENGYU_MIN_CHAR_COUNT) { return }
     let matchedChengyu = matchChengyuUseTrie(sentence)
 
     if (!matchedChengyu.length) { return }
@@ -25,7 +28,7 @@ function main() {
     })
   })
 
-  console.log(findedChengyu)
+  createResultPage(findedChengyu)
 }
 
 main()
